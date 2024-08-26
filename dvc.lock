@@ -17,3 +17,30 @@ stages:
       md5: 06696ff3d3f6613c165dd0b3676caec6.dir
       size: 167595
       nfiles: 29
+  prepare_base_model:
+    cmd: python src/cnnClassifier/pipeline/stage_02_prepare_base_model.py
+    deps:
+    - path: config/config.yaml
+      hash: md5
+      md5: e8971a55e43beccd7b3fbb3c0c53adfa
+      size: 797
+    - path: src/cnnClassifier/pipeline/stage_02_prepare_base_model.py
+      hash: md5
+      md5: 56f08209d7294ecfa003a568fb289b81
+      size: 907
+    params:
+      params.yaml:
+        CLASSES: 5
+        IMAGE_SIZE:
+        - 224
+        - 224
+        - 3
+        INCLUDE_TOP: false
+        LEARNING_RATE: 0.01
+        WEIGHTS: imagenet
+    outs:
+    - path: artifacts/prepare_base_model
+      hash: md5
+      md5: e5007c9df5a4fd62a404cdf28c32502b.dir
+      size: 219261648
+      nfiles: 2
