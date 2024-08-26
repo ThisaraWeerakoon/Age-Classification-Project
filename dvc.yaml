@@ -29,7 +29,7 @@ stages:
       - src/cnnClassifier/pipeline/stage_03_training.py
       - src/cnnClassifier/components/prepare_callbacks.py
       - config/config.yaml
-      - artifacts/data_ingestion/new_dataset
+      - artifacts/data_ingestion/new_imageset
       - artifacts/prepare_base_model
     
     params:
@@ -46,7 +46,7 @@ stages:
     deps:
       - src/cnnClassifier/pipeline/stage_04_evaluation.py
       - config/config.yaml
-      - artifacts/data_ingestion/new_dataset
+      - artifacts/data_ingestion/new_imageset
       - artifacts/training/model.keras
 
     params:

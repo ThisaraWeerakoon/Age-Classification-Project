@@ -44,3 +44,74 @@ stages:
       md5: e5007c9df5a4fd62a404cdf28c32502b.dir
       size: 219261648
       nfiles: 2
+  training:
+    cmd: python src/cnnClassifier/pipeline/stage_03_training.py
+    deps:
+    - path: artifacts/data_ingestion/new_imageset
+      hash: md5
+      md5: 06696ff3d3f6613c165dd0b3676caec6.dir
+      size: 167595
+      nfiles: 29
+    - path: artifacts/prepare_base_model
+      hash: md5
+      md5: e5007c9df5a4fd62a404cdf28c32502b.dir
+      size: 219261648
+      nfiles: 2
+    - path: config/config.yaml
+      hash: md5
+      md5: e8971a55e43beccd7b3fbb3c0c53adfa
+      size: 797
+    - path: src/cnnClassifier/components/prepare_callbacks.py
+      hash: md5
+      md5: 0363f4cea6e917922e72dea0219d9cc0
+      size: 966
+    - path: src/cnnClassifier/pipeline/stage_03_training.py
+      hash: md5
+      md5: 3e1a911fd5c97b62e9732af1d73e7c27
+      size: 1159
+    params:
+      params.yaml:
+        AUGMENTATION: true
+        BATCH_SIZE: 16
+        EPOCHS: 1
+        IMAGE_SIZE:
+        - 224
+        - 224
+        - 3
+    outs:
+    - path: artifacts/training/model.keras
+      hash: md5
+      md5: c7b15f4cb67618c6f5e176dcac717b78
+      size: 363110276
+  evaluation:
+    cmd: python src/cnnClassifier/pipeline/stage_04_evaluation.py
+    deps:
+    - path: artifacts/data_ingestion/new_imageset
+      hash: md5
+      md5: 06696ff3d3f6613c165dd0b3676caec6.dir
+      size: 167595
+      nfiles: 29
+    - path: artifacts/training/model.keras
+      hash: md5
+      md5: c7b15f4cb67618c6f5e176dcac717b78
+      size: 363110276
+    - path: config/config.yaml
+      hash: md5
+      md5: e8971a55e43beccd7b3fbb3c0c53adfa
+      size: 797
+    - path: src/cnnClassifier/pipeline/stage_04_evaluation.py
+      hash: md5
+      md5: 97782bd269c803a973824092ca935c21
+      size: 773
+    params:
+      params.yaml:
+        BATCH_SIZE: 16
+        IMAGE_SIZE:
+        - 224
+        - 224
+        - 3
+    outs:
+    - path: scores.json
+      hash: md5
+      md5: 574109a0e572eefa4fc9a18db24a4a67
+      size: 54
