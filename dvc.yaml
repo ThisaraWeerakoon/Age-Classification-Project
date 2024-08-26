@@ -27,7 +27,7 @@ stages:
     cmd: python src/cnnClassifier/pipeline/stage_03_training.py
     deps:
       - src/cnnClassifier/pipeline/stage_03_training.py
-      - src/cnnClassifier/components/prepare_callback.py
+      - src/cnnClassifier/components/prepare_callbacks.py
       - config/config.yaml
       - artifacts/data_ingestion/new_dataset
       - artifacts/prepare_base_model
