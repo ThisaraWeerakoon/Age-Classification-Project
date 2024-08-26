@@ -21,7 +21,7 @@ stages:
       - LEARNING_RATE
     
     outs:
-      - artificats/prepare_base_model
+      - artifacts/prepare_base_model
 
   training:
     cmd: python src/cnnClassifier/pipeline/stage_03_training.py
@@ -29,8 +29,8 @@ stages:
       - src/cnnClassifier/pipeline/stage_03_training.py
       - src/cnnClassifier/component/prepare_callback.py
       - config/config.yaml
-      - artificats/data_ingestion/new_dataset
-      - artificats/prepare_base_model
+      - artifacts/data_ingestion/new_dataset
+      - artifacts/prepare_base_model
     
     params:
       - IMAGE_SIZE
@@ -39,15 +39,15 @@ stages:
       - AUGMENTATION
      
     outs:
-      - artificats/training/model.keras
+      - artifacts/training/model.keras
   
   evaluation:
     cmd: python src/cnnClassifier/pipeline/stage_04_evaluation.py
     deps:
       - src/cnnClassifier/pipeline/stage_04_evaluation.py
       - config/config.yaml
-      - artificats/data_ingestion/new_dataset
-      - artificats/training/model.keras
+      - artifacts/data_ingestion/new_dataset
+      - artifacts/training/model.keras
 
     params:
       - IMAGE_SIZE
