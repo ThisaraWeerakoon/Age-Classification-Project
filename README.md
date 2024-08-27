@@ -135,14 +135,14 @@ open up you local host and port
 # Azure-CICD-Deployment-with-Github-Actions
 
 ## 1. Save pass
-	ageapp.azurecr.io
+	password
 
 ## 2. Run from terminal
-	docker build -t chickenapp.azurecr.io/chicken:latest .
+	docker build -t ageapp.azurecr.io/age:latest .
 
-	docker login chickenapp.azurecr.io
+	docker login ageapp.azurecr.io
 
-	docker push chickenapp.azurecr.io/chicken:latest
+	docker push ageapp.azurecr.io/age:latest
 
 ## 3.Deployment Steps:
 	Build the Docker image of the Source Code
