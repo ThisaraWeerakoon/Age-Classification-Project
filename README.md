@@ -132,7 +132,25 @@ open up you local host and port
     ECR_REPOSITORY_NAME = age_classification_project
 
 
+# Azure-CICD-Deployment-with-Github-Actions
 
+## 1. Save pass
+	ageapp.azurecr.io
 
+## 2. Run from terminal
+	docker build -t chickenapp.azurecr.io/chicken:latest .
+
+	docker login chickenapp.azurecr.io
+
+	docker push chickenapp.azurecr.io/chicken:latest
+
+## 3.Deployment Steps:
+	Build the Docker image of the Source Code
+	
+	Push the Docker image to Container Registry
+	
+	Launch the Web App Server in Azure
+	
+	Pull the Docker image from the container registry to Web App server and run
 
 
